@@ -1,6 +1,6 @@
 import React from "react";
 import { FiDownload } from "react-icons/fi";
-import cv from "../assets/Resume.pdf";
+import cv from "../assets/resume.pdf";
 // import jsPDF from "jspdf";
 
 import "../css/style.css";
