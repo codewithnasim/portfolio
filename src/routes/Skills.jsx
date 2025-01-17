@@ -104,28 +104,22 @@ export default function Skills() {
           <div className="w-full max-w-lg">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-                <i className="bx bxs-tailwind text-3xl mr-3"></i>
+              <i className="bx bxl-tailwind text-3xl mr-3"></i>
+
                 <span className="text-xl font-semibold text-gray-300">Tailwind CSS</span>
               </div>
               <span className="text-lg font-medium text-gray-300">75%</span>
             </div>
             <div className="w-full bg-gray-300 rounded-full h-2.5">
               <div
-                className="bg-indigo-500 h-2.5 rounded-full"
+                className="bg-orange-500 h-2.5 rounded-full"
                 style={{ width: "75%" }}
               ></div>
             </div>
           </div>
         </div>
 
-        {/* Image Section */}
-        <div className="mt-12 text-center">
-          <img
-            src="assets/img/work3.jpg"
-            alt="Skills"
-            className="max-w-xs mx-auto rounded-lg"
-          />
-        </div>
+    
       </div>
     </section>
   );
