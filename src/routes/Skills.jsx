@@ -5,7 +5,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen py-16 text-white"
+      className="bg-gradient-to-r from-yellow-800 to-purple-600 min-h-screen py-16 text-white"
     >
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
