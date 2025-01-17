@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #043c58;
+  background-color: #606af0;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -26,7 +26,7 @@
 
 /* Active and Hover States */
 .nav-item:hover, .nav-item.active {
-  color: #1E90FF;
+  color: #fbd15b;
   background-color: transparent;
 }
 
