@@ -31,7 +31,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-yellow-600 to-teal-500 min-h-screen">
+    <div className="bg-gradient-to-r from-yellow-500 to-teal-400 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Contact Hero Section */}
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
@@ -44,6 +44,8 @@ export default function Contact() {
               to work together, feel free to reach out.
             </p>
           </div>
+          
+
 
           <div className="flex justify-center items-center mt-12 lg:mt-0">
             <img
@@ -53,6 +55,16 @@ export default function Contact() {
             />
           </div>
         </div>
+        <div className="mt-8 flex justify-center items-center">
+  <a
+    href="mailto:srs.nasim@gmail.com"
+    className="animate-bounce flex items-center gap-2 px-36 rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-md hover:bg-blue-700"
+  >
+    {/* Email Icon */}
+    
+    Email Me
+  </a>
+</div>
 
         {/* Contact Form Section */}
         <div className="mt-12">
