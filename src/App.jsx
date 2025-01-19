@@ -7,7 +7,7 @@ import Project from "./routes/Project.jsx";
 import Home from "./routes/Home.jsx";
 import Navbar from "./component/Navbar.jsx";
 import Skills from "./routes/Skills.jsx";
-//text utils
+//text util
 import TextUtils from "./project/TextUtils.jsx";
 //news dekho
 
