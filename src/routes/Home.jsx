@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import cv from "../assets/resume.pdf";
 import prImage from "../assets/codin.jpg";
-
 const Home = () => {
   const handleDownload = (e) => {
     e.preventDefault(); // Prevent page reload
@@ -35,7 +34,7 @@ const Home = () => {
               <button
                 type="button"
                 onClick={handleDownload}
-                className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="animate-bounce  rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-700"
               >
                 Download CV
               </button>
@@ -44,17 +43,10 @@ const Home = () => {
                   type="button"
                   className="rounded-md bg-gray-800 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 >
-                  Contact
+                  Contact Me
                 </button>
               </Link>
-              <Link to="/project">
-                <button
-                  type="button"
-                  className="rounded-md bg-gray-800 px-4 py-2 text-sm font-semibold text-white shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-500"
-                >
-                  Projects
-                </button>
-              </Link>
+              
             </div>
           </div>
 

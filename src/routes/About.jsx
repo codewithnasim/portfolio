@@ -19,7 +19,7 @@ const About = () => {
             I'm <span className="text-indigo-600">Nasim Islam</span>
           </h2>
           <h3 className="mt-4 text-xl text-gray-700 font-semibold animate-pulse">
-            Full Stack Web Developer
+             Web Developer
           </h3>
 
           <p className="mt-6 text-lg text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">

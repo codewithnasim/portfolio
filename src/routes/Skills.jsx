@@ -1,11 +1,11 @@
 import React from "react";
-import "../css/style.css"; // Your custom styles
+ // Your custom styles
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen py-16 text-white"
+      className=" min-h-screen py-16"
     >
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
@@ -18,9 +18,9 @@ export default function Skills() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
                 <i className="bx bxl-html5 text-3xl mr-3"></i>
-                <span className="text-xl font-semibold text-gray-300">HTML5</span>
+                <span className="text-xl font-semibold text-blue-800">HTML5</span>
               </div>
-              <span className="text-lg font-medium text-gray-300">95%</span>
+              <span className="text-lg font-medium text-blue-800">95%</span>
             </div>
             <div className="w-full bg-gray-300 rounded-full h-2.5">
               <div
@@ -35,9 +35,9 @@ export default function Skills() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
                 <i className="bx bxl-css3 text-3xl mr-3"></i>
-                <span className="text-xl font-semibold text-gray-300">CSS3</span>
+                <span className="text-xl font-semibold text-blue-800">CSS3</span>
               </div>
-              <span className="text-lg font-medium text-gray-300">85%</span>
+              <span className="text-lg font-medium text-blue-800">85%</span>
             </div>
             <div className="w-full bg-gray-300 rounded-full h-2.5">
               <div
@@ -52,11 +52,11 @@ export default function Skills() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
                 <i className="bx bxl-javascript text-3xl mr-3"></i>
-                <span className="text-xl font-semibold text-gray-300">
+                <span className="text-xl font-semibold text-blue-800">
                   JavaScript
                 </span>
               </div>
-              <span className="text-lg font-medium text-gray-300">70%</span>
+              <span className="text-lg font-medium text-blue-800">70%</span>
             </div>
             <div className="w-full bg-gray-300 rounded-full h-2.5">
               <div
@@ -71,9 +71,9 @@ export default function Skills() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
                 <i className="bx bxl-react text-3xl mr-3"></i>
-                <span className="text-xl font-semibold text-gray-300">React</span>
+                <span className="text-xl font-semibold text-blue-800">React</span>
               </div>
-              <span className="text-lg font-medium text-gray-300">80%</span>
+              <span className="text-lg font-medium text-blue-800">80%</span>
             </div>
             <div className="w-full bg-gray-300 rounded-full h-2.5">
               <div
@@ -88,9 +88,9 @@ export default function Skills() {
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
                 <i className="bx bxl-python text-3xl mr-3"></i>
-                <span className="text-xl font-semibold text-gray-300">Python</span>
+                <span className="text-xl font-semibold text-blue-800">Python</span>
               </div>
-              <span className="text-lg font-medium text-gray-300">75%</span>
+              <span className="text-lg font-medium text-blue-800">75%</span>
             </div>
             <div className="w-full bg-gray-300 rounded-full h-2.5">
               <div
@@ -104,28 +104,23 @@ export default function Skills() {
           <div className="w-full max-w-lg">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-                <i className="bx bxs-tailwind text-3xl mr-3"></i>
-                <span className="text-xl font-semibold text-gray-300">Tailwind CSS</span>
+              <i className="bx bxl-tailwind-css text-3xl mr-3"></i>
+
+
+                <span className="text-xl font-semibold text-blue-800">Tailwind </span>
               </div>
-              <span className="text-lg font-medium text-gray-300">75%</span>
+              <span className="text-lg font-medium text-blue-800">75%</span>
             </div>
             <div className="w-full bg-gray-300 rounded-full h-2.5">
               <div
-                className="bg-indigo-500 h-2.5 rounded-full"
+                className="bg-orange-500 h-2.5 rounded-full"
                 style={{ width: "75%" }}
               ></div>
             </div>
           </div>
         </div>
 
-        {/* Image Section */}
-        <div className="mt-12 text-center">
-          <img
-            src="assets/img/work3.jpg"
-            alt="Skills"
-            className="max-w-xs mx-auto rounded-lg"
-          />
-        </div>
+    
       </div>
     </section>
   );

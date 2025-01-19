@@ -18,6 +18,8 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  
+
   return (
     <>
       <nav className="sticky">
@@ -26,12 +28,14 @@ const Navbar = () => {
             <Link to="/" className={`nav-item ${isActive("/")}`}>
               Home
             </Link>
+            
           </div>
 
           <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-            <Link to="/project" className={`nav-item ${isActive("/project")}`}>
+          <Link to="/project" className={`nav-item ${isActive("/project")}`}>
               Project
             </Link>
+           
             <Link to="/contact" className={`nav-item ${isActive("/contact")}`}>
               Contact
             </Link>
@@ -44,11 +48,15 @@ const Navbar = () => {
           </div>
 
           {/* Dark Mode Button */}
-          <div className="dark-mode-btn">
+          {/* <div className="dark-mode-btn">
             <button onClick={toggleDarkMode} className="nav-item">
               <MdOutlineDarkMode size={20} />
             </button>
-          </div>
+          </div> */}
+
+          <div><Link to="/project" className={`nav-item ${isActive("/project")}`}>
+              Project
+            </Link></div>
 
           {/* Mobile Toggle Button */}
           <div className="menu-toggle" onClick={toggleMenu}>

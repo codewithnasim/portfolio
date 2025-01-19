@@ -44,7 +44,7 @@ function App() {
         <Route path="/entertainment" element={<Entertainment />} />
         <Route path="/technology" element={<Technology />} />
         <Route path="/passgenerator" element={<Passgenerator />} />
-        <Route path="/cureencyconverter" element={<CurrencyConvert />} />
+        <Route path="/currencyconverter" element={<CurrencyConvert />} />
         <Route path="/tictactoe" element={<Tictactoe />} />
         <Route path="/submit" element={<Submit />} />
       </Routes>

@@ -31,7 +31,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-teal-500 min-h-screen">
+    <div className="bg-gradient-to-r from-yellow-600 to-teal-500 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Contact Hero Section */}
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
