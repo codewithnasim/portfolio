@@ -4,13 +4,10 @@ import React from "react";
 export default function Skills() {
   return (
     <section
-      id="skills"
-<<<<<<< HEAD
-      className=" min-h-screen py-16"
-=======
-      className="bg-gradient-to-r from-yellow-800 to-purple-600 min-h-screen py-16 text-white"
->>>>>>> 04cf40658ca93f0ea900a95d5865ecb45ce51d77
-    >
+      id="skills" className=" min-h-screen py-16">
+
+
+
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
         <h2 className="text-4xl font-bold text-center mb-12">My Skills</h2>
@@ -108,16 +105,13 @@ export default function Skills() {
           <div className="w-full max-w-lg">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center">
-<<<<<<< HEAD
               <i className="bx bxl-tailwind-css text-3xl mr-3"></i>
 
 
                 <span className="text-xl font-semibold text-blue-800">Tailwind </span>
-=======
-              <i className="bx bxl-tailwind text-3xl mr-3"></i>
 
-                <span className="text-xl font-semibold text-gray-300">Tailwind CSS</span>
->>>>>>> 04cf40658ca93f0ea900a95d5865ecb45ce51d77
+            
+ 
               </div>
               <span className="text-lg font-medium text-blue-800">75%</span>
             </div>
