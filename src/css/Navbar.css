@@ -4,7 +4,11 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+<<<<<<< HEAD
   background-color: #606af0  ;
+=======
+  background-color: #606af0;
+>>>>>>> 04cf40658ca93f0ea900a95d5865ecb45ce51d77
   position: sticky;
   top: 0;
   z-index: 1000;
