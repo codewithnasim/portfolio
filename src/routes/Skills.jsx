@@ -68,7 +68,7 @@ export default function Skills() {
 function SkillGroup({ title, skills }) {
   return (
     <div>
-      <h3 className="text-xl font-semibold text-gray-800 mb-4 text-left ml-40">
+      <h3 className="text-xl font-semibold text-gray-800 mb-4 text-left">
         {title}
       </h3>
       <div className="flex flex-wrap justify-center gap-6">
