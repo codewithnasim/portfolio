@@ -1,0 +1,67 @@
+.navComponent {
+  /* background-color: yellow; */
+  overflow: hidden;
+}
+/* Style the links inside the navigation bar */
+.navComponent a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+#togbtn {
+  float: right;
+}
+
+/* Change the color of links on hover */
+.navComponent :hover {
+  background-color: #ddd;
+  color: red;
+}
+.active {
+  background-color: rgb(21, 209, 118);
+}
+
+/* Add an active class to highlight the current page */
+/* Hide the link that should open and close the navComponent on small screens */
+.navComponent .icon {
+  display: none;
+}
+@media screen and (max-width: 200px) {
+  /* .navComponent a:not(:first-child) {
+    display: none;
+  } */
+  .navComponent a.icon {
+    float: right;
+    display: block;
+  }
+}
+.navComponent a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 13px 13px;
+  text-decoration: none;
+  font-size: 11px;
+}
+/* #togbtn {
+  float: left;
+} */
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+@media screen and (min-width: 80rem) {
+  .container {
+    margin: 1em 2em;
+  }
+}

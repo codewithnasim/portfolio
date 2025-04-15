@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* const navigation = [
+  { name: "Home", href: "/", current: true },
+  { name: "Project", href: "/project", current: false },
+  { name: "Contact", href: "/contact", current: false },
+  { name: "About", href: "/about", current: false },
+]; */

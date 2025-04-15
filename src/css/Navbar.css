@@ -1,0 +1,81 @@
+/* Main Navigation */
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  background-color: #606af0  ;
+
+  background-color: #606af0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo and Links */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  padding: 0 50% 0 0;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+ 
+}
+
+/* Active and Hover States */
+.nav-item:hover, .nav-item.active {
+  color: #fbd15b;
+  background-color: transparent;
+}
+
+/* Dark Mode Button */
+.dark-mode-btn .nav-item {
+  font-size: 1.5rem;
+  color: white; /* Updated to valid color */
+  cursor: pointer;
+}
+
+/* Menu Toggle Button for Mobile */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: rgb(0, 0, 0);
+  padding: 1rem;
+ 
+}
+
+.mobile-menu.open {
+  display: flex;
+  position: static;
+}
+
+/* For Mobile & Small Screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    gap: 2px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
