@@ -10,7 +10,8 @@ export default function NewsHomepage() {
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState("en"); // Default language is English
+  const [language, setLanguage] = useState("en");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Language options
   const languages = [
@@ -102,6 +103,7 @@ export default function NewsHomepage() {
   const handleCategoryChange = (cat) => {
     setSearchQuery("");
     setCategory(cat);
+    setMobileMenuOpen(false); // Close mobile menu when a category is selected
   };
 
   // Handle search submission
@@ -112,6 +114,7 @@ export default function NewsHomepage() {
     } else {
       setCategory("top");
     }
+    setMobileMenuOpen(false); // Close mobile menu when searching
   };
 
   // Toggle dark mode
@@ -127,6 +130,11 @@ export default function NewsHomepage() {
     setSearchQuery("");
   };
 
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   // Get localized text based on current language
   const getText = (enText, bnText) => {
     return language === "en" ? enText : bnText;
@@ -140,51 +148,154 @@ export default function NewsHomepage() {
     >
       {/* Header */}
       <header
-        className={`sticky top-0 z-10 ${
+        className={`sticky top-0 z-20 ${
           darkMode ? "bg-gray-800" : "bg-white"
         } shadow-md`}
       >
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            {/* Logo */}
+            {/* Logo and Mobile Menu Button */}
             <div className="flex items-center">
-              <h1
-                className={`text-2xl font-bold ${
-                  darkMode ? "text-blue-400" : "text-blue-600"
-                }`}
+              {/* Mobile menu button */}
+              <button
+                onClick={toggleMobileMenu}
+                className="mr-2 p-2 md:hidden rounded-md focus:outline-none"
+                aria-label="Toggle menu"
               >
-                {language === "en"
-                  ? "FactNest By Nasim"
-                  : "ফ্যাক্ট নেস্ট - নাসিম"}
-              </h1>
-              <span
-                className={`ml-2 px-2 py-1 text-xs font-bold rounded-md ${
-                  darkMode ? "bg-blue-600" : "bg-blue-100 text-blue-800"
-                }`}
-              >
-                {language === "en" ? "LIVE" : "লাইভ"}
-              </span>
+                {mobileMenuOpen ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                )}
+              </button>
+
+              {/* Logo */}
+              <div className="flex items-center">
+                <h1
+                  className={`text-xl md:text-2xl font-bold ${
+                    darkMode ? "text-blue-400" : "text-blue-600"
+                  }`}
+                >
+                  {language === "en"
+                    ? "FactNest By Nasim"
+                    : "ফ্যাক্ট নেস্ট - নাসিম"}
+                </h1>
+                <span
+                  className={`ml-2 px-2 py-1 text-xs font-bold rounded-md ${
+                    darkMode ? "bg-blue-600" : "bg-blue-100 text-blue-800"
+                  }`}
+                >
+                  {language === "en" ? "LIVE" : "লাইভ"}
+                </span>
+              </div>
             </div>
 
-            {/* Language Selector */}
-            <select
-              value={language}
-              onChange={handleLanguageChange}
-              className={`mx-2 p-1 rounded text-sm ${
-                darkMode ? "bg-gray-700 text-white" : "bg-gray-100"
-              }`}
-            >
-              {languages.map((lang) => (
-                <option key={lang.code} value={lang.code}>
-                  {lang.name}
-                </option>
-              ))}
-            </select>
+            {/* Desktop Controls */}
+            <div className="hidden md:flex items-center space-x-2">
+              {/* Language Selector */}
+              <select
+                value={language}
+                onChange={handleLanguageChange}
+                className={`p-1 rounded text-sm ${
+                  darkMode ? "bg-gray-700 text-white" : "bg-gray-100"
+                }`}
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
 
-            {/* Search Form */}
+              {/* Search Form */}
+              <form
+                onSubmit={handleSearch}
+                className={`flex items-center px-2 py-1 rounded-lg ${
+                  darkMode ? "bg-gray-700" : "bg-gray-100"
+                } flex-grow max-w-md mx-2`}
+              >
+                <input
+                  type="text"
+                  placeholder={getText(
+                    "Search for news...",
+                    "খবর অনুসন্ধান করুন..."
+                  )}
+                  className="w-full bg-transparent border-none focus:outline-none px-2"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  className={`p-1 rounded-full ${
+                    darkMode ? "text-gray-400" : "text-gray-500"
+                  }`}
+                >
+                  🔍
+                </button>
+              </form>
+
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={toggleDarkMode}
+                className={`p-2 rounded-full ${
+                  darkMode
+                    ? "bg-gray-700 text-yellow-300"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                {darkMode ? "☀️" : "🌙"}
+              </button>
+            </div>
+
+            {/* Mobile Controls */}
+            <div className="flex md:hidden items-center space-x-2">
+              {/* Dark Mode Toggle */}
+              <button
+                onClick={toggleDarkMode}
+                className={`p-2 rounded-full ${
+                  darkMode
+                    ? "bg-gray-700 text-yellow-300"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                {darkMode ? "☀️" : "🌙"}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Search - Always visible on mobile */}
+          <div className="mt-3 md:hidden">
             <form
               onSubmit={handleSearch}
-              className="hidden md:flex items-center px-2 py-1 rounded-lg bg-gray-100 flex-grow max-w-md mx-4"
+              className={`flex items-center px-3 py-2 rounded-lg ${
+                darkMode ? "bg-gray-700" : "bg-gray-100"
+              }`}
             >
               <input
                 type="text"
@@ -192,7 +303,7 @@ export default function NewsHomepage() {
                   "Search for news...",
                   "খবর অনুসন্ধান করুন..."
                 )}
-                className="w-full bg-transparent border-none focus:outline-none text-gray-800 px-2"
+                className="w-full bg-transparent border-none focus:outline-none px-2"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -205,23 +316,11 @@ export default function NewsHomepage() {
                 🔍
               </button>
             </form>
-
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={toggleDarkMode}
-              className={`p-2 rounded-full ${
-                darkMode
-                  ? "bg-gray-700 text-yellow-300"
-                  : "bg-gray-200 text-gray-700"
-              }`}
-            >
-              {darkMode ? "☀️" : "🌙"}
-            </button>
           </div>
 
-          {/* Navigation */}
-          <nav className="mt-4 overflow-x-auto pb-2">
-            <ul className="flex space-x-4">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:block mt-3 overflow-x-auto pb-2">
+            <ul className="flex space-x-2">
               {categories.map((cat) => (
                 <li key={cat.id}>
                   <button
@@ -244,30 +343,65 @@ export default function NewsHomepage() {
             </ul>
           </nav>
         </div>
-      </header>
 
-      {/* Mobile Search */}
-      <div
-        className={`md:hidden ${
-          darkMode ? "bg-gray-800" : "bg-gray-100"
-        } px-4 py-2`}
-      >
-        <form
-          onSubmit={handleSearch}
-          className="flex items-center px-2 py-1 rounded-lg bg-white"
-        >
-          <input
-            type="text"
-            placeholder={getText("Search for news...", "খবর অনুসন্ধান করুন...")}
-            className="w-full bg-transparent border-none focus:outline-none text-gray-800 px-2"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button type="submit" className="p-1 rounded-full text-gray-500">
-            🔍
-          </button>
-        </form>
-      </div>
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div
+            className={`md:hidden absolute top-full left-0 right-0 z-10 ${
+              darkMode ? "bg-gray-800" : "bg-white"
+            } shadow-lg`}
+          >
+            <div className="container mx-auto px-4 py-2">
+              {/* Language Selector in Mobile Menu */}
+              <div className="mb-3">
+                <label
+                  className={`block text-sm font-medium mb-1 ${
+                    darkMode ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
+                  {getText("Language", "ভাষা")}
+                </label>
+                <select
+                  value={language}
+                  onChange={handleLanguageChange}
+                  className={`w-full p-2 rounded text-sm ${
+                    darkMode ? "bg-gray-700 text-white" : "bg-gray-100"
+                  }`}
+                >
+                  {languages.map((lang) => (
+                    <option key={lang.code} value={lang.code}>
+                      {lang.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Mobile Navigation */}
+              <ul className="space-y-1">
+                {categories.map((cat) => (
+                  <li key={cat.id}>
+                    <button
+                      onClick={() => handleCategoryChange(cat.id)}
+                      className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium 
+                        ${
+                          category === cat.id
+                            ? darkMode
+                              ? "bg-blue-600 text-white"
+                              : "bg-blue-600 text-white"
+                            : darkMode
+                            ? "text-gray-300 hover:bg-gray-700"
+                            : "text-gray-600 hover:bg-gray-200"
+                        }`}
+                    >
+                      {cat.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </header>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-6">
@@ -275,7 +409,7 @@ export default function NewsHomepage() {
         {loading ? (
           <div className="animate-pulse">
             <div
-              className={`h-64 ${
+              className={`h-48 md:h-64 ${
                 darkMode ? "bg-gray-700" : "bg-gray-300"
               } mb-4 rounded-lg`}
             ></div>
@@ -319,23 +453,26 @@ export default function NewsHomepage() {
               >
                 <div className="relative">
                   <img
-                    src={news[0].image_url || "/api/placeholder/800/400"}
+                    src={news[0].image_url || "/placeholder-news.jpg"}
                     alt={news[0].title || getText("News image", "সংবাদ ছবি")}
-                    className="w-full h-64 md:h-96 object-cover"
+                    className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
+                    onError={(e) => {
+                      e.target.src = "/placeholder-news.jpg";
+                    }}
                   />
-                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-6">
+                  <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-4 md:p-6">
                     <span
                       className={`px-2 py-1 text-xs font-bold rounded-md bg-blue-600 text-white`}
                     >
                       {getText("FEATURED", "ফিচারড")}
                     </span>
-                    <h2 className="text-2xl md:text-3xl font-bold text-white mt-2">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-2">
                       {news[0].title}
                     </h2>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center text-sm mb-4">
+                <div className="p-4 md:p-6">
+                  <div className="flex items-center text-xs sm:text-sm mb-3 md:mb-4">
                     <span
                       className={`${
                         darkMode ? "text-gray-400" : "text-gray-600"
@@ -349,7 +486,7 @@ export default function NewsHomepage() {
                   <p
                     className={`${
                       darkMode ? "text-gray-300" : "text-gray-700"
-                    } mb-4`}
+                    } mb-4 text-sm md:text-base`}
                   >
                     {news[0].description ||
                       news[0].content?.slice(0, 200) ||
@@ -362,7 +499,7 @@ export default function NewsHomepage() {
                     href={news[0].link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`text-blue-600 font-medium hover:underline`}
+                    className={`text-blue-600 font-medium hover:underline text-sm md:text-base`}
                   >
                     {getText("Read full story →", "সম্পূর্ণ খবর পড়ুন →")}
                   </a>
@@ -372,13 +509,13 @@ export default function NewsHomepage() {
 
             {/* News Grid */}
             <h2
-              className={`text-xl font-bold mb-4 ${
+              className={`text-lg md:text-xl font-bold mb-4 ${
                 darkMode ? "text-gray-200" : "text-gray-800"
               }`}
             >
               {getText("Latest Stories", "সর্বশেষ সংবাদ")}
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {news.slice(1).map((item, index) => (
                 <article
                   key={index}
@@ -387,13 +524,16 @@ export default function NewsHomepage() {
                   } h-full flex flex-col`}
                 >
                   <img
-                    src={item.image_url || "/api/placeholder/400/200"}
+                    src={item.image_url || "/placeholder-news.jpg"}
                     alt={item.title || getText("News image", "সংবাদ ছবি")}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-40 sm:h-48 object-cover"
+                    onError={(e) => {
+                      e.target.src = "/placeholder-news.jpg";
+                    }}
                   />
-                  <div className="p-4 flex-grow">
+                  <div className="p-3 md:p-4 flex-grow">
                     <h3
-                      className={`text-lg font-semibold mb-2 ${
+                      className={`text-base md:text-lg font-semibold mb-2 ${
                         darkMode ? "text-gray-100" : "text-gray-800"
                       }`}
                     >
@@ -411,7 +551,7 @@ export default function NewsHomepage() {
                       </span>
                     </div>
                     <p
-                      className={`text-sm mb-4 ${
+                      className={`text-xs md:text-sm mb-3 ${
                         darkMode ? "text-gray-300" : "text-gray-600"
                       }`}
                     >
@@ -426,12 +566,12 @@ export default function NewsHomepage() {
                       ...
                     </p>
                   </div>
-                  <div className="px-4 pb-4 mt-auto">
+                  <div className="px-3 pb-3 md:px-4 md:pb-4 mt-auto">
                     <a
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`text-sm text-blue-600 font-medium hover:underline`}
+                      className={`text-xs md:text-sm text-blue-600 font-medium hover:underline`}
                     >
                       {getText("Read more →", "আরও পড়ুন →")}
                     </a>
@@ -442,14 +582,18 @@ export default function NewsHomepage() {
           </>
         ) : (
           <div
-            className={`p-8 text-center rounded-lg ${
+            className={`p-6 md:p-8 text-center rounded-lg ${
               darkMode ? "bg-gray-800" : "bg-gray-100"
             }`}
           >
-            <h3 className="text-xl font-medium mb-2">
+            <h3 className="text-lg md:text-xl font-medium mb-2">
               {getText("No news articles found", "কোন সংবাদ পাওয়া যায়নি")}
             </h3>
-            <p className={`${darkMode ? "text-gray-400" : "text-gray-600"}`}>
+            <p
+              className={`text-sm md:text-base ${
+                darkMode ? "text-gray-400" : "text-gray-600"
+              }`}
+            >
               {getText(
                 "Try a different category or search term",
                 "ভিন্ন বিভাগ বা অনুসন্ধান শব্দ ব্যবহার করে দেখুন"
@@ -467,18 +611,18 @@ export default function NewsHomepage() {
       >
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h2 className="text-xl font-bold">
+            <div className="mb-4 md:mb-0 text-center md:text-left">
+              <h2 className="text-lg md:text-xl font-bold">
                 {language === "en" ? "GlobalNews" : "গ্লোবাল নিউজ"}
               </h2>
-              <p className="text-sm">
+              <p className="text-xs md:text-sm">
                 {getText(
                   "Your trusted source for global news coverage",
                   "বিশ্বব্যাপী সংবাদ কভারেজের জন্য আপনার বিশ্বস্ত উৎস"
                 )}
               </p>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-4 text-xs md:text-sm">
               <a href="#" className="hover:underline">
                 {getText("About", "সম্পর্কে")}
               </a>
@@ -493,7 +637,7 @@ export default function NewsHomepage() {
               </a>
             </div>
           </div>
-          <div className="mt-6 text-center text-sm">
+          <div className="mt-4 md:mt-6 text-center text-xs md:text-sm">
             <p>
               &copy; {new Date().getFullYear()}{" "}
               {language === "en" ? "GlobalNews" : "গ্লোবাল নিউজ"}.{" "}
