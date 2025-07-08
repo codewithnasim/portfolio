@@ -104,7 +104,7 @@ export default function Contact() {
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-500">Email</p>
                     <a
-                      href="mailto:srs.nasim@gmail.com"
+                      href="mailto:nasim.codes@gmail.com"
                       className="text-blue-600 hover:underline"
                     >
                       nasim@gmail.com
